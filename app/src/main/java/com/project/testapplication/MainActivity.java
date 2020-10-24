@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final ArrayList<String> genders = new ArrayList<>();
-
         genders.add("Male");
         genders.add("Female");
 
@@ -51,10 +50,13 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "COMPLETE THE REGISTARTION", Toast.LENGTH_LONG).show();
         else if(chkBox.isChecked() == false)
             Toast.makeText(this, "You must be 18 or over to register !", Toast.LENGTH_SHORT).show();
-        else if(genderSpinner.getSelectedItem().toString() == " ")
-            Toast.makeText(this, "Please select your gender", Toast.LENGTH_SHORT).show();
+
         else {
-            String fullName = editFirstName.getText().toString() + " " + editLastName.getText().toString();
+            String gender;
+            if(genderSpinner.getSelectedItem().toString() == "Male") gender = "Mr.";
+            else gender = "Mrs.";
+
+            String fullName = "Thanks for registering " + gender + " " + editFirstName.getText().toString() + " " + editLastName.getText().toString() + ".";
             txtName.setText(fullName);
             txtEmail.setText(editEmail.getText().toString());
         }
